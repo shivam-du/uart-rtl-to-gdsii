@@ -1,0 +1,18 @@
+{
+    "DESIGN_NAME": "uart_top",
+
+    "VERILOG_FILES": [
+        "dir::rtl/baud_generator.v",
+        "dir::rtl/uart_tx.v",
+        "dir::rtl/uart_rx.v",
+        "dir::rtl/uart_top.v"
+    ],
+
+    "CLOCK_PORT": "clk",
+
+    "CLOCK_PERIOD": 20,
+
+    "FP_PDN_MULTILAYER": true,
+
+    "DIODE_INSERTION_STRATEGY": 4
+}
