@@ -1,5 +1,13 @@
 <div align="center">
 
+<img src="images/uart_rtl_to_gdsii_banner.png" alt="UART RTL-to-GDSII ASIC Implementation Banner" width="100%">
+
+# UART RTL-to-GDSII ASIC Implementation using OpenLane2
+
+### Complete ASIC Design Flow using Verilog HDL, OpenLane2 and SKY130 PDK
+
+</div>
+
 # UART RTL-to-GDSII ASIC Implementation using OpenLane2
 
 ### Complete ASIC Design Flow from RTL Design to GDSII using Open-Source EDA Tools
