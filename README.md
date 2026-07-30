@@ -1,81 +1,626 @@
-# uart-rtl-to-gdsii
 <div align="center">
 
-# RTL-to-GDSII Implementation of a UART IP Core using OpenLane2
+# UART RTL-to-GDSII ASIC Implementation using OpenLane2
 
-### 🚀 Complete Open-Source ASIC Design Flow from Verilog RTL to Fabrication-Ready GDSII
+### Complete ASIC Design Flow from RTL Design to GDSII using Open-Source EDA Tools
 
-<p align="center">
-
-![Verilog](https://img.shields.io/badge/Language-Verilog%20HDL-blue?style=for-the-badge)
-![ASIC](https://img.shields.io/badge/ASIC-RTL--to--GDSII-success?style=for-the-badge)
-![PDK](https://img.shields.io/badge/PDK-SKY130-orange?style=for-the-badge)
-![OpenLane2](https://img.shields.io/badge/OpenLane2-Flow-green?style=for-the-badge)
-![OpenROAD](https://img.shields.io/badge/OpenROAD-Physical%20Design-red?style=for-the-badge)
-
-</p>
-
-<p align="center">
-
-![Yosys](https://img.shields.io/badge/Synthesis-Yosys-blueviolet?style=flat-square)
-![Magic](https://img.shields.io/badge/DRC-Magic-blue?style=flat-square)
-![Netgen](https://img.shields.io/badge/LVS-Netgen-yellow?style=flat-square)
-![KLayout](https://img.shields.io/badge/Layout-KLayout-lightgrey?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)
-
-</p>
+![GitHub repo size](https://img.shields.io/github/repo-size/shivam-du/uart-rtl-to-gdsii)
+![GitHub last commit](https://img.shields.io/github/last-commit/shivam-du/uart-rtl-to-gdsii)
+![GitHub stars](https://img.shields.io/github/stars/shivam-du/uart-rtl-to-gdsii?style=social)
+![GitHub forks](https://img.shields.io/github/forks/shivam-du/uart-rtl-to-gdsii?style=social)
+![License](https://img.shields.io/github/license/shivam-du/uart-rtl-to-gdsii)
+![OpenLane2](https://img.shields.io/badge/OpenLane-2-blue)
+![Sky130](https://img.shields.io/badge/PDK-SKY130-orange)
+![Verilog](https://img.shields.io/badge/Language-Verilog-success)
+![Platform](https://img.shields.io/badge/Platform-Ubuntu%20WSL-green)
 
 </div>
 
 ---
 
-## 📄 Project Report
+# Project Overview
 
-The complete project report is available here:
+This repository presents the complete RTL-to-GDSII implementation of a **Universal Asynchronous Receiver Transmitter (UART)** using **Verilog HDL** and the **OpenLane2 ASIC design flow** with the **SkyWater SKY130 Process Design Kit (PDK)**.
 
-📘 [UART RTL-to-GDSII Report](reports/UART_RTL_to_GDSII_Report.pdf)
+The project demonstrates every major stage of a digital ASIC implementation starting from RTL design, functional verification, logic synthesis, floorplanning, placement, clock tree synthesis, routing, physical verification, and finally the generation of the manufacturable **GDSII layout**.
 
-
-# 📖 Project Overview
-
-This repository presents the **complete RTL-to-GDSII implementation of a Universal Asynchronous Receiver-Transmitter (UART) IP Core** using the **OpenLane2 open-source ASIC design flow** and the **SkyWater SKY130 Process Design Kit (PDK)**.
-
-The project demonstrates the complete digital ASIC design methodology beginning with **Register Transfer Level (RTL)** design in **Verilog HDL** and ending with a **fabrication-ready GDSII layout**. Every major stage of the ASIC implementation flow has been carried out using open-source Electronic Design Automation (EDA) tools, including functional verification, logic synthesis, floorplanning, placement, clock tree synthesis, routing, timing analysis, parasitic extraction, physical verification, and final signoff.
-
-The UART IP core was designed using a modular architecture consisting of a **Baud Rate Generator**, **UART Transmitter**, **UART Receiver**, and a **Top-Level Integration Module**. The complete design was verified using simulation before being implemented through the OpenLane2 automated RTL-to-GDSII flow.
+Unlike RTL-only projects, this repository covers the complete front-end and back-end ASIC implementation flow using open-source EDA tools.
 
 ---
 
-# ✨ Project Features
+# Repository Highlights
 
-- ✔️ Modular UART IP Core written in Verilog HDL
-- ✔️ Functional verification using dedicated testbenches
-- ✔️ RTL schematics generated using Yosys
-- ✔️ Complete RTL-to-GDSII implementation using OpenLane2
-- ✔️ Logic synthesis using Yosys
-- ✔️ Automated floorplanning and placement using OpenROAD
-- ✔️ Clock Tree Synthesis (CTS)
-- ✔️ Global and Detailed Routing
-- ✔️ RC Extraction (OpenRCX)
-- ✔️ Static Timing Analysis (OpenSTA)
-- ✔️ IR-Drop Analysis
-- ✔️ Design Rule Checking (Magic)
-- ✔️ Layout Versus Schematic Verification (Netgen)
-- ✔️ Manufacturability Verification
-- ✔️ Final GDSII Layout Generation
+- Complete UART RTL Design in Verilog HDL
+- Modular Design Architecture
+- Functional Simulation and Verification
+- RTL Synthesis
+- OpenLane2 RTL-to-GDSII Flow
+- Physical Design using OpenROAD
+- Clock Tree Synthesis (CTS)
+- Global and Detailed Routing
+- Power Distribution Network (PDN)
+- Physical Verification
+- Final GDSII Layout Generation
+- Comprehensive Technical Report
+- GitHub Documentation
 
 ---
 
-# 🛠️ Design Flow
+# ASIC Design Flow
 
+<p align="center">
+<img src="images/asic_design_flow_full.png" width="95%">
+</p>
+
+The complete ASIC implementation follows the standard digital IC design methodology beginning with RTL design and ending with the generation of the final manufacturable GDSII layout.
+
+---
+
+# UART Internal Architecture
+
+<p align="center">
+<img src="images/complete_uart_internal_architecture.png" width="90%">
+</p>
+
+The UART Top Module integrates four major functional blocks:
+
+- Baud Rate Generator
+- UART Transmitter
+- UART Receiver
+- Top-Level Controller
+
+These modules work together to perform reliable asynchronous serial communication.
+
+---
+
+# Repository Structure
+
+```text
+uart_asic_ip/
+│
+├── rtl/                 # Verilog source files
+├── tb/                  # Testbenches
+├── sim/                 # Simulation outputs
+├── waveforms/           # GTKWave waveforms
+├── images/              # Project figures
+├── reports/             # Reports
+├── runs/                # OpenLane2 implementation results
+├── logs/                # Tool execution logs
+├── config.json          # OpenLane configuration
+├── README.md
+└── LICENSE
 ```
+
+---
+
+# Design Specifications
+
+| Parameter | Value |
+|-----------|-------|
+| Design | UART |
+| Language | Verilog HDL |
+| Communication | Asynchronous Serial |
+| Data Width | 8-bit |
+| Stop Bits | 1 |
+| Parity | None |
+| PDK | SkyWater SKY130 |
+| RTL Synthesis | Yosys |
+| Physical Design | OpenROAD |
+| Complete Flow | OpenLane2 |
+| Layout Viewer | KLayout |
+| DRC Tool | Magic |
+| LVS Tool | Netgen |
+
+---
+
+# Tools Used
+
+| Tool | Purpose |
+|------|----------|
+| Verilog HDL | RTL Design |
+| Icarus Verilog | Functional Simulation |
+| GTKWave | Waveform Analysis |
+| Yosys | RTL Synthesis |
+| OpenLane2 | RTL-to-GDSII Flow |
+| OpenROAD | Physical Design |
+| Magic | Physical Verification |
+| Netgen | LVS |
+| KLayout | GDSII Visualization |
+| Git | Version Control |
+| GitHub | Project Repository |
+
+---
+
+# UART Design Architecture
+
+<p align="center">
+<img src="images/uart_design_architecture.png" width="90%">
+</p>
+
+The UART architecture consists of independent transmitter and receiver modules controlled through a common top-level interface. The baud rate generator provides synchronized timing for serial data transmission and reception.
+
+---
+
+# UART Communication Frame
+
+<p align="center">
+<img src="images/uart_frame_flowchart.png" width="75%">
+</p>
+
+The UART frame consists of:
+
+- Start Bit
+- 8-bit Data Field
+- Stop Bit
+
+This standard frame format enables asynchronous communication without requiring a shared clock between transmitter and receiver.
+
+---
+
+# RTL Module Architecture
+
+The UART IP is designed using a modular architecture, making each functional block independent, reusable, and easy to verify. The complete RTL design consists of four Verilog modules:
+
+| Module | Description |
+|---------|-------------|
+| Baud Rate Generator | Generates the baud tick used for UART timing |
+| UART Transmitter | Converts 8-bit parallel data into serial data |
+| UART Receiver | Converts incoming serial data back into parallel form |
+| UART Top Module | Integrates all modules into a complete UART IP |
+
+---
+
+# Baud Rate Generator
+
+The baud rate generator divides the input system clock to generate the required baud tick used by both the transmitter and receiver modules.
+
+### Architecture
+
+<p align="center">
+<img src="images/baud_rate_generator_architecture.png" width="70%">
+</p>
+
+### RTL Schematic
+
+<p align="center">
+<img src="images/baud_generator_rtl.png" width="90%">
+</p>
+
+### Functional Verification
+
+<p align="center">
+<img src="images/baud_generator_waveform.png" width="90%">
+</p>
+
+---
+
+# UART Transmitter
+
+The UART transmitter converts parallel data into serial data by sequentially transmitting the start bit, eight data bits, and the stop bit according to the generated baud clock.
+
+### Architecture
+
+<p align="center">
+<img src="images/uart_transmitter_architecture.png" width="70%">
+</p>
+
+### RTL Schematic
+
+<p align="center">
+<img src="images/uart_tx_rtl.png" width="90%">
+</p>
+
+### Functional Verification
+
+<p align="center">
+<img src="images/transmitter_waveform.png" width="90%">
+</p>
+
+### Transmitter Operation
+
+The UART transmitter performs the following sequence:
+
+1. Waits for the `tx_start` signal.
+2. Sends the start bit (`0`).
+3. Serially transmits the 8-bit data.
+4. Sends the stop bit (`1`).
+5. Returns to the idle state.
+
+---
+
+# UART Receiver
+
+The UART receiver continuously monitors the RX line for a valid start bit. After detecting the start bit, it samples the incoming serial data according to the baud clock and reconstructs the original 8-bit parallel data.
+
+### Architecture
+
+<p align="center">
+<img src="images/uart_receiver_architecture.png" width="70%">
+</p>
+
+### RTL Schematic
+
+<p align="center">
+<img src="images/uart_rx_rtl.png" width="90%">
+</p>
+
+### Functional Verification
+
+<p align="center">
+<img src="images/receiver_waveform.png" width="90%">
+</p>
+
+### Receiver Operation
+
+The UART receiver performs the following sequence:
+
+1. Detects the falling edge of the start bit.
+2. Samples incoming bits at each baud tick.
+3. Stores all eight received bits.
+4. Verifies the stop bit.
+5. Asserts the `rx_done` signal after successful reception.
+
+---
+
+# UART Top Module
+
+The UART Top Module integrates all submodules into a complete UART communication system.
+
+It provides:
+
+- Common system clock
+- Reset synchronization
+- Baud clock distribution
+- Transmit interface
+- Receive interface
+- Data path integration
+
+### Top-Level Architecture
+
+<p align="center">
+<img src="images/uart_design_architecture.png" width="80%">
+</p>
+
+### RTL Schematic
+
+<p align="center">
+<img src="images/uart_top.png" width="90%">
+</p>
+
+### Functional Verification
+
+<p align="center">
+<img src="images/uart_waveform.png" width="90%">
+</p>
+
+---
+
+# RTL Design Summary
+
+| Feature | Status |
+|----------|--------|
+| Baud Generator | ✔ Completed |
+| UART Transmitter | ✔ Completed |
+| UART Receiver | ✔ Completed |
+| UART Top Module | ✔ Completed |
+| Functional Simulation | ✔ Verified |
+| RTL Verification | ✔ Successful |
+
+The RTL design was verified using simulation before proceeding to synthesis and physical implementation through the OpenLane2 RTL-to-GDSII flow.
+
+---
+
+# OpenLane2 RTL-to-GDSII Implementation
+
+After successful RTL verification, the UART IP Core was implemented using the **OpenLane2** open-source ASIC design flow targeting the **SkyWater SKY130 Process Design Kit (PDK)**.
+
+OpenLane2 integrates multiple open-source EDA tools into a fully automated RTL-to-GDSII implementation flow. The complete flow includes logic synthesis, floorplanning, placement, clock tree synthesis, routing, parasitic extraction, timing analysis, physical verification, and final GDSII generation.
+
+---
+
+# Complete OpenLane2 Workflow
+
+<p align="center">
+<img src="images/openlane2_internal_workflow.png" width="95%">
+</p>
+
+The complete RTL-to-GDSII implementation is performed automatically through OpenLane2, providing an end-to-end ASIC design methodology using open-source EDA tools.
+
+---
+
+# RTL Synthesis
+
+Logic synthesis was performed using **Yosys**, where the Verilog RTL was optimized and mapped to the **SkyWater SKY130 HD Standard Cell Library**.
+
+### Synthesis Flow
+
+<p align="center">
+<img src="images/synthesis_flow.png" width="85%">
+</p>
+
+### Synthesis Results
+
+- RTL successfully synthesized
+- Technology mapping completed
+- Standard cells generated
+- Netlist optimized
+- Area optimization performed
+
+---
+
+# Physical Design Flow
+
+Following synthesis, the gate-level netlist entered the physical implementation stage.
+
+<p align="center">
+<img src="images/physical_design_flow.png" width="90%">
+</p>
+
+The physical design stage converts the synthesized netlist into a manufacturable integrated circuit layout while satisfying timing, congestion, and routing constraints.
+
+---
+
+# Floorplanning
+
+The floorplanning stage determines the die dimensions, core area, utilization, placement rows, and I/O pin locations before placement begins.
+
+### Objectives
+
+- Define die dimensions
+- Define core utilization
+- Create placement rows
+- Initialize routing resources
+
+---
+
+# Standard Cell Placement
+
+<p align="center">
+<img src="images/Standard_Cell_Placement.png" width="90%">
+</p>
+
+During placement, OpenROAD determines the optimal physical location of every standard cell while minimizing total wirelength and preserving timing performance.
+
+### Placement Objectives
+
+- Reduce wirelength
+- Improve timing
+- Reduce congestion
+- Maintain legalization
+- Optimize routing resources
+
+---
+
+# Input Pin Placement
+
+<p align="center">
+<img src="images/Input_pins_placement.png" width="80%">
+</p>
+
+Input pins are positioned around the chip boundary according to the OpenLane floorplan configuration to minimize routing complexity.
+
+---
+
+# Output Pin Placement
+
+<p align="center">
+<img src="images/Output_pin_placement.png" width="80%">
+</p>
+
+Output pins are similarly optimized to reduce routing congestion and improve signal accessibility.
+
+---
+
+# Clock Tree Synthesis (CTS)
+
+<p align="center">
+<img src="images/clock_tree_synthesis.png" width="90%">
+</p>
+
+Clock Tree Synthesis inserts buffers and clock distribution networks to minimize clock skew and insertion delay across sequential elements.
+
+### CTS Objectives
+
+- Reduce clock skew
+- Improve clock latency
+- Maintain timing closure
+- Balance clock distribution
+
+---
+
+# Power Distribution Network (PDN)
+
+<p align="center">
+<img src="images/Power_Distribution_Network_(PDN)_Generation.png" width="90%">
+</p>
+
+A dedicated Power Distribution Network (PDN) was automatically generated to provide reliable power delivery to all standard cells while minimizing IR drop.
+
+---
+
+# Global and Detailed Routing
+
+Routing establishes all signal interconnections between placed cells while satisfying SKY130 design rules.
+
+### Routing Flow
+
+<p align="center">
+<img src="images/routing_flow.png" width="80%">
+</p>
+
+---
+
+## Top Pin Routing
+
+<p align="center">
+<img src="images/top_pins_routing.png" width="90%">
+</p>
+
+The top-level routing stage connects external interface pins with the internal routing resources while minimizing congestion.
+
+---
+
+## Bottom Pin Routing
+
+<p align="center">
+<img src="images/bottom_pin_routing.png" width="90%">
+</p>
+
+Bottom-layer routing ensures complete signal connectivity across the lower boundary of the design.
+
+---
+
+## Detailed Routing
+
+<p align="center">
+<img src="images/Detailed_Routing_of_Standard_Cell_Interconnections.png" width="95%">
+</p>
+
+Detailed routing finalizes every signal connection while satisfying spacing, width, via, and antenna constraints defined by the SKY130 technology.
+
+---
+
+## Internal Routing
+
+<p align="center">
+<img src="images/Detailed_Internal_Routing_with_Filler_Cells_and_Hold_Buffers.png" width="95%">
+</p>
+
+The completed routed layout includes filler cells, hold buffers, and optimized interconnections required for timing closure and manufacturability.
+
+---
+
+## Zoomed Routing View
+
+<p align="center">
+<img src="images/Zoomed_View_of_Input_Pin_Routing.png" width="48%">
+<img src="images/Zoomed_View_of_Output_Pin_Routing.png" width="48%">
+</p>
+
+These close-up views highlight the detailed routing topology around the I/O regions and demonstrate the routing quality achieved by OpenLane2.
+
+---
+
+# Physical Design Summary
+
+| Stage | Status |
+|---------|--------|
+| RTL Synthesis | ✅ Completed |
+| Floorplanning | ✅ Completed |
+| Standard Cell Placement | ✅ Completed |
+| Pin Placement | ✅ Completed |
+| Clock Tree Synthesis | ✅ Completed |
+| Power Distribution Network | ✅ Completed |
+| Global Routing | ✅ Completed |
+| Detailed Routing | ✅ Completed |
+
+The OpenLane2 flow successfully transformed the synthesizable Verilog RTL into a fully routed physical layout while satisfying the design constraints of the SKY130 technology.
+
+---
+
+# Physical Verification and Signoff
+
+After completing the routing stage, the layout underwent physical verification to ensure manufacturability and logical correctness. OpenLane2 automatically invokes the necessary verification tools as part of the signoff flow.
+
+---
+
+# Design Rule Checking (DRC)
+
+Design Rule Checking was performed using **Magic** to verify that the layout satisfies all design rules defined by the SKY130 PDK.
+
+<p align="center">
+<img src="images/physical_verification.png" width="90%">
+</p>
+
+### DRC Objectives
+
+- Verify minimum spacing rules
+- Verify minimum width rules
+- Check enclosure rules
+- Detect overlapping geometries
+- Ensure fabrication compliance
+
+---
+
+# Layout Versus Schematic (LVS)
+
+Layout Versus Schematic (LVS) was performed using **Netgen** to verify that the extracted layout is electrically equivalent to the synthesized gate-level netlist.
+
+### LVS Verification
+
+- Layout extraction completed
+- Netlist comparison completed
+- Connectivity verified
+- Logical equivalence confirmed
+
+---
+
+# Manufacturability Verification
+
+The completed design successfully passed all major physical verification stages.
+
+| Verification Stage | Status |
+|--------------------|:------:|
+| Design Rule Check (DRC) | ✅ PASS |
+| Layout Versus Schematic (LVS) | ✅ PASS |
+| Routing Verification | ✅ PASS |
+| Antenna Check | ✅ PASS |
+| Connectivity Check | ✅ PASS |
+
+---
+
+# Final Routed Layout
+
+<p align="center">
+<img src="images/Final_Detailed_Routed_Layout_of_the_UART_ASIC.png" width="95%">
+</p>
+
+The routed layout contains all standard cells, clock distribution, signal routing, power rails, and filler cells required for fabrication.
+
+---
+
+# Final GDSII Layout
+
+The final physical implementation was exported as a **GDSII** file, the industry-standard format used for semiconductor fabrication.
+
+<p align="center">
+<img src="images/Final_GDSII_Layout_in_KLayout.png" width="95%">
+</p>
+
+The layout was visualized and inspected using **KLayout**, confirming the successful completion of the complete RTL-to-GDSII implementation flow.
+
+---
+
+# Zoomed Layout View
+
+<p align="center">
+<img src="images/Zoomed_GDSII_Layout.png" width="90%">
+</p>
+
+The zoomed view illustrates the detailed metal routing, vias, standard-cell placement, and routing density within the final ASIC layout.
+
+---
+
+# Metal Routing Close-Up
+
+<p align="center">
+<img src="images/Close-Up_View_of_Metal_Layers_and_Via_Structures.png" width="90%">
+</p>
+
+This close-up highlights the routing resources, via structures, and multiple metal layers generated during the detailed routing stage.
+
+---
+
+# Complete Project Flow
+
+```text
 Verilog RTL
       │
       ▼
 RTL Simulation
       │
       ▼
-RTL Verification
+Functional Verification
       │
       ▼
 Logic Synthesis
@@ -90,13 +635,13 @@ Placement
 Clock Tree Synthesis
       │
       ▼
-Routing
+Power Distribution Network
       │
       ▼
-RC Extraction
+Global Routing
       │
       ▼
-Static Timing Analysis
+Detailed Routing
       │
       ▼
 Physical Verification
@@ -107,722 +652,38 @@ Final GDSII Layout
 
 ---
 
-# 📑 Table of Contents
-
-- [Project Overview](#-project-overview)
-- [Project Features](#-project-features)
-- [Repository Structure](#-repository-structure)
-- [UART Protocol Overview](#-uart-protocol-overview)
-- [System Architecture](#-system-architecture)
-- [RTL Modules](#-rtl-modules)
-- [RTL Schematics](#-rtl-schematics)
-- [Functional Verification](#-functional-verification)
-- [OpenLane2 RTL-to-GDSII Flow](#-openlane2-rtl-to-gdsii-flow)
-- [Physical Design Results](#-physical-design-results)
-- [Physical Verification](#-physical-verification)
-- [Final GDSII Layout](#-final-gdsii-layout)
-- [Project Statistics](#-project-statistics)
-- [Tools Used](#-tools-used)
-- [How to Run](#-how-to-run)
-- [Future Improvements](#-future-improvements)
-- [License](#-license)
-- [Author](#-author)
-
-- # 📁 Repository Structure
-
-```text
-uart-rtl-to-gdsii
-│
-├── rtl/                        # Verilog HDL source files
-│   ├── uart_top.v
-│   ├── uart_tx.v
-│   ├── uart_rx.v
-│   └── baud_generator.v
-│
-├── tb/                         # Testbenches
-│   ├── tb_uart_top.v
-│   ├── tb_uart_tx.v
-│   ├── tb_uart_rx.v
-│   └── tb_baud_generator.v
-│
-├── waveforms/                  # Simulation waveforms (.vcd)
-│
-├── images/                     # Architecture, RTL, OpenLane screenshots
-│
-├── reports/                    # Final project report (PDF)
-│
-├── config.json                 # OpenLane2 configuration
-│
-├── README.md
-│
-└── LICENSE
-```
-
----
-
-# 📡 UART Protocol Overview
-
-The **Universal Asynchronous Receiver-Transmitter (UART)** is one of the most widely used asynchronous serial communication protocols in embedded systems, microcontrollers, and System-on-Chip (SoC) designs. Unlike synchronous interfaces, UART does not require a dedicated clock line. Instead, both the transmitter and receiver operate using a pre-configured baud rate.
-
-UART communication transmits data sequentially over a single communication line using a predefined frame format.
-
-A standard UART frame consists of:
-
-```
-Idle → Start Bit → Data Bits → (Optional Parity) → Stop Bit
-```
-
-Typical UART Frame:
-
-```
- ─────┐_______________________________________________┐────────
-      │                                               │
-      ▼                                               ▼
-
-      Start      D0 D1 D2 D3 D4 D5 D6 D7      Stop
-
-        0         x  x  x  x  x  x  x  x        1
-```
-
-### UART Characteristics
+# Project Statistics
 
 | Parameter | Value |
-|-----------|-------|
-| Communication Type | Asynchronous |
-| Data Width | 8-bit |
-| Start Bits | 1 |
-| Stop Bits | 1 |
-| Parity | Not Implemented |
-| Duplex Mode | Full Duplex |
-| RTL Language | Verilog HDL |
-
----
-
-# 🏗 System Architecture
-
-The UART IP core has been designed using a modular architecture. Each functional block performs a dedicated task while communicating with other modules through well-defined interfaces. This modular design simplifies verification, improves readability, and enables future scalability.
-
-<p align="center">
-<img src="images/uart_architecture.png" width="90%">
-</p>
-
-<p align="center">
-<b>Figure 1.</b> Overall architecture of the UART IP Core.
-</p>
-
-The complete UART system consists of four RTL modules:
-
-| Module | Function |
-|---------|----------|
-| Baud Rate Generator | Generates baud tick from system clock |
-| UART Transmitter | Converts parallel data into serial UART frames |
-| UART Receiver | Converts serial UART frames back to parallel data |
-| UART Top Module | Integrates all submodules into a complete UART IP |
-
----
-
-# 🧩 RTL Modules
-
-## 1️⃣ Baud Rate Generator
-
-The Baud Rate Generator divides the high-frequency system clock to generate the baud tick required by both the transmitter and receiver. This ensures synchronized serial communication without requiring a dedicated external clock.
-
-### Features
-
-- Configurable baud divisor
-- Counter-based implementation
-- Generates periodic baud tick
-- Shared by TX and RX modules
-
-<p align="center">
-<img src="images/baud_generator_flowchart.png" width="65%">
-</p>
-
----
-
-## 2️⃣ UART Transmitter
-
-The UART transmitter accepts parallel data and serializes it according to the UART communication protocol. Transmission begins with a start bit, followed by eight data bits, and finally a stop bit.
-
-### Features
-
-- FSM-based implementation
-- Parallel-to-Serial conversion
-- Start and Stop bit generation
-- Busy signal generation
-
-<p align="center">
-<img src="images/uart_tx_flowchart.png" width="75%">
-</p>
-
----
-
-## 3️⃣ UART Receiver
-
-The UART receiver samples incoming serial data at baud-rate intervals and reconstructs the transmitted byte. After receiving all bits, the received data is presented on the output bus.
-
-### Features
-
-- FSM-based implementation
-- Serial-to-Parallel conversion
-- Start bit detection
-- Stop bit verification
-- Receive complete indication
-
-<p align="center">
-<img src="images/uart_rx_flowchart.png" width="75%">
-</p>
-
----
-
-## 4️⃣ UART Top Module
-
-The top-level module integrates the Baud Generator, UART Transmitter, and UART Receiver into a complete UART communication system.
-
-Responsibilities include:
-
-- Clock distribution
-- Baud tick distribution
-- Module interconnection
-- External interface management
-
-<p align="center">
-<img src="images/system_flow.png" width="90%">
-</p>
-
----
-
-# ⚙ Design Specifications
-
-| Specification | Value |
-|--------------|-------|
-| RTL Language | Verilog HDL |
-| Design Style | Synchronous Digital Logic |
-| Communication Protocol | UART |
-| Data Width | 8 bits |
-| Clock | System Clock |
-| Technology | SkyWater SKY130 PDK |
-| ASIC Flow | OpenLane2 |
-| Final Output | GDSII Layout |
-
----
-
-# 🔷 RTL Schematics
-
-RTL schematics were generated using **Yosys** after successful elaboration of each Verilog module. These schematics provide a structural representation of the synthesized RTL and help visualize the interconnection between logic blocks before technology mapping.
-
----
-
-## 🔹 Baud Rate Generator RTL
-
-<p align="center">
-<img src="images/baud_generator_rtl.png" width="85%">
-</p>
-
-<p align="center">
-<b>Figure 2.</b> RTL schematic of the Baud Rate Generator generated using Yosys.
-</p>
-
-The Baud Rate Generator consists of a counter-based clock divider that produces periodic baud ticks used by both the transmitter and receiver modules.
-
----
-
-## 🔹 UART Transmitter RTL
-
-<p align="center">
-<img src="images/uart_tx_rtl.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 3.</b> RTL schematic of the UART Transmitter.
-</p>
-
-The transmitter implements a finite state machine (FSM) responsible for transmitting the UART frame in the correct sequence, including the start bit, data bits, and stop bit.
-
----
-
-## 🔹 UART Receiver RTL
-
-<p align="center">
-<img src="images/uart_rx_rtl.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 4.</b> RTL schematic of the UART Receiver.
-</p>
-
-The receiver detects the start bit, samples incoming serial data using the baud tick, reconstructs the transmitted byte, and indicates successful reception.
-
----
-
-## 🔹 UART Top RTL
-
-<p align="center">
-<img src="images/uart_top_rtl.png" width="100%">
-</p>
-
-<p align="center">
-<b>Figure 5.</b> RTL schematic of the complete UART Top module.
-</p>
-
-The top-level RTL integrates all functional modules into a complete UART IP core, including clock distribution, baud generation, data transmission, and data reception.
-
----
-
-# 📊 Functional Verification
-
-Each RTL module was verified independently using dedicated Verilog testbenches before system-level integration. Simulation waveforms were generated to validate correct functionality under different operating conditions.
-
----
-
-## 🔹 Baud Rate Generator Simulation
-
-<p align="center">
-<img src="images/baud_generator_waveform.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 6.</b> Simulation waveform of the Baud Rate Generator.
-</p>
-
-### Verification Summary
-
-- ✔️ Clock divider operates correctly
-- ✔️ Baud tick generated periodically
-- ✔️ Counter resets correctly
-- ✔️ Stable timing behavior observed
-
----
-
-## 🔹 UART Transmitter Simulation
-
-<p align="center">
-<img src="images/uart_tx_waveform.png" width="100%">
-</p>
-
-<p align="center">
-<b>Figure 7.</b> UART Transmitter simulation waveform.
-</p>
-
-### Verification Summary
-
-- ✔️ Start bit generated correctly
-- ✔️ 8-bit parallel data serialized correctly
-- ✔️ Stop bit transmitted successfully
-- ✔️ Busy signal asserted during transmission
-
----
-
-## 🔹 UART Receiver Simulation
-
-<p align="center">
-<img src="images/uart_rx_waveform.png" width="100%">
-</p>
-
-<p align="center">
-<b>Figure 8.</b> UART Receiver simulation waveform.
-</p>
-
-### Verification Summary
-
-- ✔️ Start bit detected successfully
-- ✔️ Serial data sampled correctly
-- ✔️ Parallel output reconstructed accurately
-- ✔️ Receive-complete signal asserted
-
----
-
-## 🔹 UART Top Simulation
-
-<p align="center">
-<img src="images/uart_top_waveform.png" width="100%">
-</p>
-
-<p align="center">
-<b>Figure 9.</b> Complete UART Top simulation waveform.
-</p>
-
-### Verification Summary
-
-- ✔️ Successful end-to-end UART communication
-- ✔️ Correct interaction between TX and RX modules
-- ✔️ Shared baud generator operation verified
-- ✔️ Correct data transmission and reception
-
----
-
-# 📈 RTL Verification Summary
-
-| Module | Status |
-|---------|--------|
-| Baud Rate Generator | ✅ Passed |
-| UART Transmitter | ✅ Passed |
-| UART Receiver | ✅ Passed |
-| UART Top Module | ✅ Passed |
-
-All RTL modules successfully passed functional verification before entering the ASIC implementation flow.
-
----
-
-# 🚀 OpenLane2 RTL-to-GDSII Implementation
-
-After functional verification, the UART IP core was implemented using the **OpenLane2** open-source ASIC flow targeting the **SkyWater SKY130 Process Design Kit (PDK)**. The complete RTL-to-GDSII flow was executed on Ubuntu (WSL2) using OpenLane2, OpenROAD, and associated open-source EDA tools.
-
-The implementation flow automatically performed synthesis, floorplanning, placement, clock tree synthesis, routing, parasitic extraction, timing analysis, and physical verification, resulting in a fabrication-ready GDSII layout.
-
----
-
-## 🔄 OpenLane2 Design Flow
-
-<p align="center">
-<img src="images/openlane_flow.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 10.</b> Complete OpenLane2 RTL-to-GDSII ASIC Design Flow.
-</p>
-
----
-
-# 🔹 RTL Synthesis
-
-Logic synthesis was performed using **Yosys**, where the Verilog RTL was optimized and mapped to the **SkyWater SKY130 HD Standard Cell Library**.
-
-### Synthesis Summary
-
-| Parameter | Value |
-|-----------|------:|
-| Technology Library | SKY130 HD |
-| Standard Cells | 219 |
-| Sequential Cells | 55 |
-| Cell Area | 2539.936 µm² |
-| Status | ✅ Successful |
-
-The synthesized netlist served as the input for the subsequent physical implementation stages.
-
----
-
-# 🏗 Floorplanning
-
-The floorplanning stage defines the chip dimensions, core utilization, placement rows, and I/O pin locations before standard-cell placement.
-
-<p align="center">
-<img src="images/floorplan.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 11.</b> Generated floorplan using OpenROAD.
-</p>
-
-### Floorplanning Results
-
-| Metric | Value |
-|--------|------:|
-| Die Area | 7658.18 µm² |
-| Core Area | 5009.80 µm² |
-| Standard Cell Area | 3210.58 µm² |
-| Core Utilization | 64.09% |
-| Design Instances | 375 |
-
-✔️ Floorplanning completed successfully.
-
----
-
-# 📍 Global & Detailed Placement
-
-During placement, OpenROAD determined the physical locations of all standard cells while minimizing wirelength and preserving timing quality.
-
-<p align="center">
-<img src="images/placement.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 12.</b> Standard-cell placement after legalization.
-</p>
-
-### Placement Statistics
-
-| Metric | Value |
-|--------|------:|
-| HPWL Before Optimization | 3351.5 µm |
-| HPWL After Optimization | 3207.2 µm |
-| HPWL Improvement | 4.3% |
-| Total Displacement | 0 µm |
-| Average Displacement | 0 µm |
-| Maximum Displacement | 0 µm |
-
-✔️ Placement legalized successfully with zero displacement.
-
----
-
-# ⏱ Clock Tree Synthesis (CTS)
-
-Clock Tree Synthesis (CTS) inserts clock buffers and inverters to distribute the clock signal while minimizing skew and insertion delay.
-
-<p align="center">
-<img src="images/cts.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 13.</b> Clock Tree Synthesis stage.
-</p>
-
-### CTS Summary
-
-| Metric | Value |
-|--------|------:|
-| Clock Nets | 6 |
-| Clock Buffers | 5 |
-| Clock Inverters | 3 |
-| Timing Repair Buffers | 78 |
-| Total Cell Area | 3405.77 µm² |
-
-✔️ Clock tree generated successfully.
-
----
-
-# 🛣 Global & Detailed Routing
-
-Routing establishes all signal interconnections between placed cells while satisfying the SKY130 design rules.
-
-<p align="center">
-<img src="images/routing.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 14.</b> Final routed layout.
-</p>
-
-### Routing Results
-
-| Metric | Value |
-|--------|------:|
-| Routed Nets | 314 |
-| Total Wirelength | 8404 µm |
-| Total Vias | 1804 |
-| Routing Utilization | 14.71% |
-| Routing Overflow | 0 |
-| Antenna Violations | 0 |
-
-✔️ Routing completed without congestion or overflow.
-
----
-
-# 📈 Physical Design Summary
-
-| Stage | Status |
-|--------|--------|
-| RTL Synthesis | ✅ Passed |
-| Floorplanning | ✅ Passed |
-| Placement | ✅ Passed |
-| Clock Tree Synthesis | ✅ Passed |
-| Global Routing | ✅ Passed |
-| Detailed Routing | ✅ Passed |
-
-The OpenLane2 implementation successfully transformed the synthesizable RTL into a routed ASIC layout while satisfying all physical implementation constraints.
-
----
-
-# 🔬 Physical Verification and Signoff
-
-After routing, the generated layout was subjected to a complete physical verification flow to ensure correctness, manufacturability, and fabrication readiness.
-
----
-
-## 📐 RC Extraction
-
-Parasitic resistance and capacitance were extracted using **OpenRCX** to generate SPEF files for accurate post-layout timing analysis.
-
-### Generated Files
-
-| Operating Corner | Output |
-|-----------------|--------|
-| Minimum | `uart_top.min.spef` |
-| Typical | `uart_top.nom.spef` |
-| Maximum | `uart_top.max.spef` |
-
-✔️ RC Extraction completed successfully.
-
----
-
-## ⏱ Static Timing Analysis (STA)
-
-Static Timing Analysis was performed using **OpenSTA** with the extracted parasitic information.
-
-### Timing Status
-
-| Check | Result |
-|--------|--------|
-| Setup Analysis | ✅ Passed |
-| Hold Analysis | ✅ Passed |
-| Multi-Corner Timing | ✅ Completed |
-
-The post-layout timing analysis confirmed successful timing closure for the implemented UART IP core.
-
----
-
-# ⚡ IR-Drop Analysis
-
-Power integrity verification was carried out to evaluate voltage drop across the power distribution network.
-
-<p align="center">
-<img src="images/irdrop_report.png" width="90%">
-</p>
-
-<p align="center">
-<b>Figure 15.</b> IR-drop analysis results.
-</p>
-
-### IR-Drop Summary
-
-| Parameter | VPWR | VGND |
-|-----------|------|------|
-| Worst Voltage | 1.79984 V | 0.000233 V |
-| Average IR Drop | 0.0000416 V | 0.0000400 V |
-| Worst IR Drop | 0.0001605 V | 0.0002330 V |
-| Percentage Drop | 0.01% | 0.01% |
-
-✔️ Negligible voltage drop observed.
-
----
-
-# ✔️ Design Rule Checking (Magic)
-
-The routed layout was verified using **Magic** to ensure compliance with the SKY130 design rules.
-
-<p align="center">
-<img src="images/magic_drc.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 16.</b> Magic DRC verification.
-</p>
-
-### DRC Summary
-
-| Metric | Result |
-|--------|--------|
-| DRC Violations | 0 |
-| Status | ✅ PASS |
-
-The layout successfully passed all design rule checks without any violations.
-
----
-
-# ✔️ Layout Versus Schematic (Netgen LVS)
-
-Netgen was used to compare the extracted layout netlist with the synthesized gate-level netlist.
-
-<p align="center">
-<img src="images/netgen_lvs.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 17.</b> Netgen LVS verification.
-</p>
-
-### LVS Summary
-
-| Check | Status |
-|-------|--------|
-| Layout Matches Schematic | ✅ PASS |
-| LVS Verification | ✅ PASS |
-
-The physical layout is logically equivalent to the synthesized RTL netlist.
-
----
-
-# 🏭 Manufacturability Report
-
-The final manufacturability report summarizes all signoff verification stages.
-
-<p align="center">
-<img src="images/manufacturability.png" width="70%">
-</p>
-
-<p align="center">
-<b>Figure 18.</b> Manufacturability verification report.
-</p>
-
-### Verification Summary
-
-| Verification | Status |
-|-------------|--------|
-| Antenna Check | ✅ PASS |
-| Magic DRC | ✅ PASS |
-| Netgen LVS | ✅ PASS |
-| Manufacturability | ✅ PASS |
-
-The UART layout satisfies the manufacturability requirements of the SKY130 process.
-
----
-
-# 🖥 Final GDSII Layout
-
-The verified design was exported as a fabrication-ready GDSII layout.
-
-<p align="center">
-<img src="images/final_gds_layout.png" width="95%">
-</p>
-
-<p align="center">
-<b>Figure 19.</b> Final GDSII layout viewed in KLayout.
-</p>
-
-The final layout successfully completed the entire RTL-to-GDSII implementation flow using OpenLane2.
-
----
-
-# 📊 Overall Project Statistics
-
-| Category | Value |
-|----------|-------|
+|------------|--------|
+| Design | UART IP Core |
 | RTL Language | Verilog HDL |
 | Communication Protocol | UART |
-| Technology | SkyWater SKY130 PDK |
-| ASIC Flow | OpenLane2 |
-| Logic Synthesis | Yosys |
-| Physical Design | OpenROAD |
-| RC Extraction | OpenRCX |
-| Timing Analysis | OpenSTA |
-| DRC | Magic |
-| LVS | Netgen |
-| Layout Viewer | KLayout |
 | RTL Modules | 4 |
 | Testbenches | 4 |
-| Final Output | Fabrication-ready GDSII |
+| Target PDK | SkyWater SKY130 |
+| Synthesis Tool | Yosys |
+| Physical Design Tool | OpenROAD |
+| RTL-to-GDSII Flow | OpenLane2 |
+| Layout Viewer | KLayout |
+| DRC Tool | Magic |
+| LVS Tool | Netgen |
+| Operating System | Ubuntu (WSL2) |
 
 ---
 
-# 🛠 Tools Used
+# How to Run
 
-| Tool | Purpose |
-|------|---------|
-| Verilog HDL | RTL Design |
-| Yosys | Logic Synthesis |
-| OpenLane2 | RTL-to-GDSII Flow |
-| OpenROAD | Physical Design |
-| OpenRCX | RC Extraction |
-| OpenSTA | Static Timing Analysis |
-| Magic | Design Rule Checking |
-| Netgen | Layout Versus Schematic |
-| KLayout | Layout Visualization |
-| GTKWave | Waveform Analysis |
-| Ubuntu (WSL2) | Development Environment |
-
----
-
-# ▶️ How to Run
-
-### Clone the Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/shivam-du/uart-rtl-to-gdsii.git
-
 cd uart-rtl-to-gdsii
 ```
 
-### RTL Simulation
+---
+
+## RTL Simulation
 
 ```bash
 iverilog -o uart_top_tb rtl/*.v tb/tb_uart_top.v
@@ -832,29 +693,61 @@ vvp uart_top_tb
 gtkwave waveforms/uart_top.vcd
 ```
 
-### OpenLane2 Flow
+---
+
+## OpenLane2 Implementation
 
 ```bash
 openlane config.json
 ```
 
-> **Note:** Ensure that OpenLane2 and the SKY130 PDK are correctly installed before running the physical design flow.
+Ensure that:
+
+- OpenLane2 is installed
+- SKY130 PDK is configured
+- Docker/WSL environment is properly set up
 
 ---
 
-# 🚀 Future Improvements
+# Project Report
 
-- Add configurable parity support.
-- Support multiple stop-bit configurations.
-- Implement configurable baud rates.
-- Add transmit and receive FIFOs.
-- Integrate APB or AXI-Lite interfaces.
-- Prototype on FPGA before fabrication.
-- Integrate the UART IP into a larger System-on-Chip (SoC).
+A detailed technical report describing every stage of the project is available in the repository.
+
+```text
+reports/
+└── UART_RTL_to_GDSII_Report.pdf
+```
+
+The report includes:
+
+- UART Theory
+- RTL Design
+- Functional Verification
+- OpenLane2 Flow
+- Physical Design
+- Timing Analysis
+- Routing
+- Physical Verification
+- Final GDSII Layout
+- Results and Conclusions
 
 ---
 
-# 📚 References
+# Future Improvements
+
+- Configurable baud-rate generation
+- Parity bit support
+- Multiple stop-bit configurations
+- FIFO-based buffering
+- Interrupt support
+- APB Interface
+- AXI-Lite Interface
+- FPGA implementation
+- Full SoC integration
+
+---
+
+# References
 
 - OpenLane2 Documentation
 - OpenROAD Documentation
@@ -862,39 +755,63 @@ openlane config.json
 - Yosys Documentation
 - Magic VLSI Documentation
 - Netgen Documentation
-- OpenSTA Documentation
+- KLayout Documentation
+- GTKWave Documentation
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 **Shivam Chaurasiya**
 
-B.Tech – Electronics and Communication Engineering
+**B.Tech – Electronics and Communication Engineering**
 
-**Areas of Interest**
+### Areas of Interest
 
 - VLSI Design
+- RTL Design
 - ASIC Physical Design
 - Digital IC Design
 - Semiconductor Technology
-- RTL Design
-- Open-Source EDA
+- Open-Source EDA Tools
+
+GitHub: **https://github.com/shivam-du**
 
 ---
 
-# 📄 License
+# License
 
 This project is licensed under the **MIT License**.
 
-See the `LICENSE` file for more details.
+See the `LICENSE` file for complete details.
+
+---
+
+# Acknowledgements
+
+This project was completed using the following open-source tools and technologies:
+
+- OpenLane2
+- OpenROAD
+- SkyWater SKY130 PDK
+- Yosys
+- Magic
+- Netgen
+- KLayout
+- GTKWave
+- Icarus Verilog
+
+Special thanks to the open-source hardware community for developing and maintaining these tools.
 
 ---
 
 <div align="center">
 
-## ⭐ If you found this project useful, consider giving it a star!
+## ⭐ If you found this repository useful, please consider giving it a star!
 
-**Thank you for visiting this repository.**
+### Thank you for visiting this project.
+
+**Happy Learning and Happy Chip Designing!**
 
 </div>
+
