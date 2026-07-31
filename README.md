@@ -255,7 +255,7 @@ The UART receiver continuously monitors the RX line for a valid start bit. After
 ### Functional Verification
 
 <p align="center">
-<img src="images/receiver_waveform.png" width="90%">
+<img src="images/receiver_wavefrom.png" width="90%">
 </p>
 
 ### Receiver Operation
@@ -580,7 +580,7 @@ The completed design successfully passed all major physical verification stages.
 # Final Routed Layout
 
 <p align="center">
-<img src="images/Final_Detailed_Routed_Layout_of_the_UART_ASIC.png" width="95%">
+<img src="images/Final_Detailed Routed_Layout_of_the_UART_ASIC.png" width="95%">
 </p>
 
 The routed layout contains all standard cells, clock distribution, signal routing, power rails, and filler cells required for fabrication.
@@ -602,7 +602,7 @@ The layout was visualized and inspected using **KLayout**, confirming the succes
 # Zoomed Layout View
 
 <p align="center">
-<img src="images/Zoomed_GDSII_Layout.png" width="90%">
+<img src="images/Zoomed_GDSII_layout.png" width="90%">
 </p>
 
 The zoomed view illustrates the detailed metal routing, vias, standard-cell placement, and routing density within the final ASIC layout.
